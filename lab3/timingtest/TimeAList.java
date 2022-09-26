@@ -1,5 +1,8 @@
 package timingtest;
+import afu.org.checkerframework.checker.igj.qual.I;
 import edu.princeton.cs.algs4.Stopwatch;
+
+import java.util.DoubleSummaryStatistics;
 
 /**
  * Created by hug.
@@ -21,7 +24,34 @@ public class TimeAList {
         timeAListConstruction();
     }
 
+    public static AList<Integer> creatAList(int begin, int nums){
+        int lastElem = begin;
+        AList<Integer> Ns = new AList<Integer>();
+        for(int i = 0; i < nums; i++){
+            Ns.addLast(lastElem);
+            lastElem *= 2;
+        }
+
+        return Ns;
+    }
+
+
     public static void timeAListConstruction() {
         // TODO: YOUR CODE HERE
+        AList<Integer> Ns = creatAList(1000, 10);
+        AList<Double> times = new AList<Double>();
+        AList<Integer> opCounts = new AList<Integer>();
+        Stopwatch sw = new Stopwatch();
+
+        for(int i = 0; i < Ns.size(); i++){
+            AList<Integer> tempList = new AList<Integer>();
+            for(int n = 0; n < Ns.get(i); n++){
+                tempList.addLast(n);
+            }
+            times.addLast(sw.elapsedTime());
+            opCounts.addLast(Ns.get(i));
+        }
+
+        printTimingTable(Ns, times, opCounts);
     }
 }
