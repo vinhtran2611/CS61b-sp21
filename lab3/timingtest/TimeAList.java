@@ -38,7 +38,7 @@ public class TimeAList {
 
     public static void timeAListConstruction() {
         // TODO: YOUR CODE HERE
-        AList<Integer> Ns = creatAList(1000, 10);
+        AList<Integer> Ns = creatAList(1000, 15);
         AList<Double> times = new AList<Double>();
         AList<Integer> opCounts = new AList<Integer>();
         Stopwatch sw = new Stopwatch();
